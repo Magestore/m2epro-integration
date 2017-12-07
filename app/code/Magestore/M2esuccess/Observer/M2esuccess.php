@@ -1,9 +1,9 @@
 <?php
 /**
- * Copyright © 2016 Magestore. All rights reserved.
- * See COPYING.txt for license details.
+ *  Copyright © 2017 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
  */
-
 namespace Magestore\M2esuccess\Observer;
 
 
@@ -13,8 +13,16 @@ abstract class M2esuccess
      * @var \Magestore\InventorySuccess\Api\Logger\LoggerInterface
      */
     protected $moduleManager;
+    /**
+     * @var \Magestore\M2esuccess\Helper\Data
+     */
     protected $helper;
 
+    /**
+     * M2esuccess constructor.
+     * @param \Magento\Framework\Module\Manager $moduleManager
+     * @param \Magestore\M2esuccess\Helper\Data $helper
+     */
     public function __construct(
         \Magento\Framework\Module\Manager $moduleManager,
         \Magestore\M2esuccess\Helper\Data $helper
@@ -36,9 +44,9 @@ abstract class M2esuccess
     }
 
     /**
-     * @param $m2eOrder
-     * @param $product_id
-     * @return string
+     * @param \Ess\M2ePro\Model\Order $m2eOrder
+     * @param int $product_id
+     * @return int $warehouseId
      */
     public function prepareWarehouseIdFromM2eListing($m2eOrder,$product_id){
         $warehouseId = '';
@@ -63,8 +71,8 @@ abstract class M2esuccess
     }
 
     /**
-     * @param $product_purchased
-     * @return $listing_id
+     * @param array $product_purchased
+     * @return int $listing_id
      */
     public function prepareFromEbay($product_purchased){
         $listing_id = 0;
@@ -82,8 +90,8 @@ abstract class M2esuccess
         */
     }
     /**
-     * @param $product_purchased
-     * @return $listing_id
+     * @param array $product_purchased
+     * @return int $listing_id
      */
     public function prepareFromAmazon($product_purchased){
         $listing_id = 0;
@@ -96,8 +104,8 @@ abstract class M2esuccess
         return $listing_id;
     }
     /**
-     * @param $warehouseId
-     * @param $warehouse
+     * @param int $warehouseId
+     * @param \Magestore\InventorySuccess\Model\Warehouse $warehouse
      */
     public function setWarehouseObject($warehouseId,$warehouse){
         $warehouseM2e = $this->helper->getModel('Config\Warehouse')->getWarehouseModel()->getCollection()

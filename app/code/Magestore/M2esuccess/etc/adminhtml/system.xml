@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-  ~ Copyright © 2016 Magestore. All rights reserved.
+  ~ Copyright © 2017 Magestore. All rights reserved.
   ~ See COPYING.txt for license details.
   -->
 
@@ -51,7 +51,7 @@
                 </field>
                 <field id="warehouse_amazon" translate="label comment" sortOrder="30" type="select" showInDefault="1" showInWebsite="1"
                        showInStore="1">
-                    <label>[Ebay] Warehouse</label>
+                    <label>[Amazon] Warehouse</label>
                     <source_model>Magestore\M2esuccess\Model\Config\Warehouse</source_model>
                     <depends>
                         <field id="associated_with_amazon">2</field>

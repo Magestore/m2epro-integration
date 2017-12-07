@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Copyright © 2016 Magestore. All rights reserved.
- * See COPYING.txt for license details.
+ *  Copyright © 2017 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
  */
 
 namespace Magestore\M2esuccess\Helper\Data;
@@ -23,6 +24,10 @@ class Warehouse extends \Magento\Framework\App\Helper\AbstractHelper
 {
     protected $warehouseFactory;
 
+    /**
+     * Warehouse constructor.
+     * @param \Magestore\InventorySuccess\Model\Warehouse $warehouseProductFactory
+     */
     public function __construct(
         \Magestore\InventorySuccess\Model\Warehouse $warehouseProductFactory
     )
@@ -33,7 +38,7 @@ class Warehouse extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * Get all enabled warehouses in system
      *
-     * @return mixed
+     * @return array
      */
     public function getAllWarehouses()
     {

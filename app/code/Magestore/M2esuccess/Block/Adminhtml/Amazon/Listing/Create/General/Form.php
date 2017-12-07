@@ -1,5 +1,9 @@
 <?php
-
+/**
+ *  Copyright © 2017 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
+ */
 namespace Magestore\M2esuccess\Block\Adminhtml\Amazon\Listing\Create\General;
 
 use Ess\M2ePro\Block\Adminhtml\Magento\Form\AbstractForm;

@@ -1,10 +1,17 @@
 <?php
-
+/**
+ *  Copyright © 2017 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
+ */
 
 namespace Magestore\M2esuccess\Helper;
 
 class Factory
 {
+    /**
+     * @var \Magento\Framework\ObjectManagerInterface
+     */
     protected $objectManager;
 
     //########################################
@@ -24,7 +31,7 @@ class Factory
     //########################################
 
     /**
-     * @param $helperName
+     * @param string $helperName
      * @param array $arguments
      * @return \Magento\Framework\App\Helper\AbstractHelper
      * @throws \Magento\Framework\Exception\ValidatorException
@@ -41,7 +48,7 @@ class Factory
     }
 
     /**
-     * @param $modelName
+     * @param string $modelName
      * @param array $arguments
      * @return mixed
      * @throws \Magento\Framework\Exception\ValidatorException

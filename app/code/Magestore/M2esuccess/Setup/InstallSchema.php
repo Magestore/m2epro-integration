@@ -1,7 +1,8 @@
 <?php
 /**
- * Copyright © 2016 Magestore. All rights reserved.
- * See COPYING.txt for license details.
+ *  Copyright © 2017 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
  */
 
 namespace Magestore\M2esuccess\Setup;

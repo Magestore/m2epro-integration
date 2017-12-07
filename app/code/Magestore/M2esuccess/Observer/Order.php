@@ -1,7 +1,8 @@
 <?php
 /**
- * Copyright © 2016 Magestore. All rights reserved.
- * See COPYING.txt for license details.
+ *  Copyright © 2017 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
  */
 
 namespace Magestore\M2esuccess\Observer;
@@ -18,9 +19,18 @@ class Order extends \Magestore\M2esuccess\Observer\M2esuccess
      * @var \Magestore\InventorySuccess\Api\Logger\LoggerInterface
      */
     protected $logger;
+    /**
+     * @var \Magento\Framework\Registry
+     */
     protected $_coreRegistry;
 
-
+    /**
+     * Order constructor.
+     * @param \Magestore\InventorySuccess\Api\Logger\LoggerInterface $logger
+     * @param \Magento\Framework\Registry $coreRegistry
+     * @param \Magento\Framework\Module\Manager $moduleManager
+     * @param \Magestore\M2esuccess\Helper\Data $helper
+     */
     public function __construct(
         \Magestore\InventorySuccess\Api\Logger\LoggerInterface $logger,
         \Magento\Framework\Registry $coreRegistry,
@@ -38,7 +48,7 @@ class Order extends \Magestore\M2esuccess\Observer\M2esuccess
      */
     public function execute(EventObserver $observer)
     {
-//        $order = $observer->getEvent()->getOrder();
+        //$order = $observer->getEvent()->getOrder();
         $warehouse = $observer->getEvent()->getWarehouse();
         try{
             if ($this->isM2eProActive()) {

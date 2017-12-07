@@ -1,5 +1,9 @@
 <?php
-
+/**
+ *  Copyright © 2017 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
+ */
 namespace Magestore\M2eSuccess\Block\Adminhtml\Listing\View;
 
 class Header extends \Ess\M2ePro\Block\Adminhtml\Magento\AbstractBlock

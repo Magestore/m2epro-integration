@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Copyright © 2016 Magestore. All rights reserved.
- * See COPYING.txt for license details.
+ *  Copyright © 2017 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
  */
 
 namespace Magestore\M2esuccess\Helper\Data;
@@ -29,20 +30,20 @@ class Process extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
-     * @param $model
-     * @param $w_id
+     * @param string $model
+     * @param int $warehouseId
      */
-    public function integrationData($model,$w_id){
+    public function integrationData($model,$warehouseId){
         try{
             $modelM2eListing = $this->magestoreHelper->getModel('M2eListing');
-            $modelM2eListing->setWarehouseId($w_id)->setListingId($model->getId())->save();
+            $modelM2eListing->setWarehouseId($warehouseId)->setListingId($model->getId())->save();
         }catch(\Exception $e){
             return;
         }
     }
 
     /**
-     * @param $orderIds
+     * @param array $orderIds
      */
     public function prepareOrderIdIntegrationWithInventory($orderIds){
         try {

@@ -1,5 +1,9 @@
 <?php
-
+/**
+ *  Copyright © 2017 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
+ */
 namespace Magestore\M2esuccess\Model;
 
 use Magento\Framework\Model\AbstractModel;
@@ -7,7 +11,7 @@ use Magento\Framework\Model\AbstractModel;
 class M2eOrder extends AbstractModel
 {
     /**
-     *
+     * construct
      */
     protected function _construct()
     {
@@ -16,7 +20,7 @@ class M2eOrder extends AbstractModel
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return bool
      */
     public function checkByM2eOrderId($id){

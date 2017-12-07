@@ -1,11 +1,18 @@
 <?php
-
+/**
+ *  Copyright © 2017 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
+ */
 namespace Magestore\M2esuccess\Model;
 
 use Magento\Framework\Model\AbstractModel;
 
 class M2eListing extends AbstractModel
 {
+    /**
+     * @var \Magestore\InventorySuccess\Model\Warehouse
+     */
     protected $warehousefactory;
 
     /**
@@ -31,7 +38,7 @@ class M2eListing extends AbstractModel
     }
 
     /**
-     *
+     * construct
      */
     protected function _construct()
     {
@@ -40,7 +47,7 @@ class M2eListing extends AbstractModel
     }
 
     /**
-     * @param $listing_id
+     * @param int $listing_id
      * @param bool $returnId
      * @return mixed
      */

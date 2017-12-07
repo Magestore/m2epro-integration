@@ -1,5 +1,9 @@
 <?php
-
+/**
+ *  Copyright © 2017 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
+ */
 namespace Magestore\M2esuccess\Controller\Adminhtml\Amazon\Listing\Create;
 
 class Index extends \Ess\M2ePro\Controller\Adminhtml\Amazon\Main

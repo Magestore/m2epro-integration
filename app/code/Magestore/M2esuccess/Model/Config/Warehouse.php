@@ -1,7 +1,8 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ *  Copyright © 2017 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
  */
 
 /**
@@ -11,9 +12,20 @@ namespace Magestore\M2esuccess\Model\Config;
 
 class Warehouse implements \Magento\Framework\Option\ArrayInterface
 {
+    /**
+     * @var \Magestore\InventorySuccess\Model\Warehouse
+     */
     protected $warehouseFactory;
+    /**
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
     protected $scopeConfig;
 
+    /**
+     * Warehouse constructor.
+     * @param \Magestore\InventorySuccess\Model\Warehouse $warehouseProductFactory
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+     */
     public function __construct(
         \Magestore\InventorySuccess\Model\Warehouse $warehouseProductFactory,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
