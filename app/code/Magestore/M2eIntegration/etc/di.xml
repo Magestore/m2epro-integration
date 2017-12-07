@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © 2017 Magestore. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Blocks Ebay -->
+    <preference for="Ess\M2ePro\Block\Adminhtml\Ebay\Listing\Create\General\Form" type="Magestore\M2eIntegration\Block\Adminhtml\Ebay\Listing\Create\General\Form" />
+    <preference for="Ess\M2ePro\Block\Adminhtml\Ebay\Listing\Grid" type="Ess\M2ePro\Block\Adminhtml\Rewrite\Ebay\Listing\Grid" />
+
+    <!-- Blocks Amazon -->
+    <preference for="Ess\M2ePro\Block\Adminhtml\Amazon\Listing\Create\General\Form" type="Magestore\M2eIntegration\Block\Adminhtml\Amazon\Listing\Create\General\Form" />
+    <preference for="Ess\M2ePro\Block\Adminhtml\Amazon\Listing\Grid" type="Ess\M2ePro\Block\Adminhtml\Rewrite\Amazon\Listing\Grid" />
+
+    <!-- Controllers Ebay -->
+    <preference for="Ess\M2ePro\Controller\Adminhtml\Ebay\Listing\Create\Index" type="Magestore\M2eIntegration\Controller\Adminhtml\Ebay\Listing\Create\Index" />
+
+    <!-- Controllers Amazon -->
+    <preference for="Ess\M2ePro\Controller\Adminhtml\Amazon\Listing\Create\Index" type="Magestore\M2eIntegration\Controller\Adminhtml\Amazon\Listing\Create\Index" />
+
+    <!-- Collection Global -->
+    <preference for="Ess\M2ePro\Model\ResourceModel\Magento\Product\Collection" type="Magestore\M2eIntegration\Model\ResourceModel\Magento\Product\Collection" />
+
+    <!-- Model Ebay -->
+    <preference for="Ess\M2ePro\Model\Ebay\Listing\Product\QtyCalculator" type="Magestore\M2eIntegration\Model\Rewrite\Ebay\Listing\Product\QtyCalculator" />
+
+    <!-- Model Amazon -->
+    <preference for="Ess\M2ePro\Model\Amazon\Listing\Product\QtyCalculator" type="Magestore\M2eIntegration\Model\Rewrite\Amazon\Listing\Product\QtyCalculator" />
+
+    <!-- Massaction Ebay -->
+    <preference for="Ess\M2ePro\Controller\Adminhtml\Ebay\Order\UpdateShippingStatus" type="Magestore\M2eIntegration\Controller\Adminhtml\Ebay\Order\UpdateShippingStatus" />
+
+    <!-- Massaction Amazon -->
+    <preference for="Ess\M2ePro\Controller\Adminhtml\Amazon\Order\UpdateShippingStatus" type="Magestore\M2eIntegration\Controller\Adminhtml\Amazon\Order\UpdateShippingStatus" />
+
+
+    <!--<preference for="Ess\M2ePro\Model\Magento\Product\Cache" type="Magestore\M2esuccess\Model\Rewrite\Magento\Product\Cache" />-->
+    <!--<preference for="Ess\M2ePro\Model\Listing\Product" type="Magestore\M2esuccess\Model\Rewrite\Listing\Product" />-->
+
+    <!--<type name="\Ess\M2ePro\Block\Adminhtml\Ebay\Listing\Grid">-->
+        <!--<plugin name="BeforeGrid" type="Magestore\M2esuccess\Plugin\Ebay\Listing\BeforeGrid" sortOrder="1" disabled="false"/>-->
+    <!--</type>-->
+
+    <type name="\Ess\M2ePro\Model\Magento\Product">
+        <plugin name="aroundProduct" type="Magestore\M2eIntegration\Plugin\Magento\Product" sortOrder="1" disabled="false"/>
+    </type>
+
+    <!-- header -->
+    <preference for="Ess\M2ePro\Block\Adminhtml\Listing\View\Header" type="Magestore\M2eIntegration\Block\Adminhtml\Listing\View\Header" />
+
+
+</config>

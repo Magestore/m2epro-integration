@@ -275,7 +275,7 @@ HTML;
         /* m2e integration with Inventory_success*/
         $warehouse =  $this->__('Warehouse');
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager
-        $resource = $objectManager->get('Magestore\M2esuccess\Helper\Data');
+        $resource = $objectManager->get('Magestore\M2eIntegration\Helper\Data');
         $model = $resource->getModel('M2eListing');
         $warehouse_listing = $model->getWarehouseByListing($row->getId());
         if($warehouse_listing && $warehouse_listing!=''){

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © 2017 Magestore. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magestore" translate="label" sortOrder="20">
+            <label>magestore</label>
+        </tab>
+        <section id="m2eintegration" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>M2e-Integration Configuration</label>
+            <tab>magestore</tab>
+            <resource>Magestore_M2eIntegration::configuration</resource>
+            <group id="integrate_m2epro" translate="label" sortOrder="1" type="text" showInDefault="1" showInWebsite="0">
+                <label>M2ePro Integration</label>
+                <!-- Ebay -->
+                <field id="associated_with_ebay" translate="label comment" sortOrder="0" type="select" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Ebay store is associated with</label>
+                    <source_model>Magestore\M2eIntegration\Model\Config\LinkEbay</source_model>
+                    <comment>
+                        <![CDATA[
+                        ]]>
+                    </comment>
+                </field>
+                <field id="warehouse_ebay" translate="label comment" sortOrder="10" type="select" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>[Ebay] Warehouse</label>
+                    <source_model>Magestore\M2eIntegration\Model\Config\Warehouse</source_model>
+                    <depends>
+                        <field id="associated_with_ebay">2</field>
+                    </depends>
+                    <comment>
+                        <![CDATA[
+                        ]]>
+                    </comment>
+                </field>
+
+                <!-- Amazon -->
+                <field id="associated_with_amazon" translate="label comment" sortOrder="20" type="select" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Amazon store is associated with</label>
+                    <source_model>Magestore\M2eIntegration\Model\Config\LinkEbay</source_model>
+                    <comment>
+                        <![CDATA[
+                        ]]>
+                    </comment>
+                </field>
+                <field id="warehouse_amazon" translate="label comment" sortOrder="30" type="select" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>[Amazon] Warehouse</label>
+                    <source_model>Magestore\M2eIntegration\Model\Config\Warehouse</source_model>
+                    <depends>
+                        <field id="associated_with_amazon">2</field>
+                    </depends>
+                    <comment>
+                        <![CDATA[
+                        ]]>
+                    </comment>
+                </field>
+
+
+            </group>
+        </section>
+    </system>
+</config>
