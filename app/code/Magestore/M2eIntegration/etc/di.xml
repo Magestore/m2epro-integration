@@ -38,13 +38,9 @@
     <!--<preference for="Ess\M2ePro\Model\Magento\Product\Cache" type="Magestore\M2esuccess\Model\Rewrite\Magento\Product\Cache" />-->
     <!--<preference for="Ess\M2ePro\Model\Listing\Product" type="Magestore\M2esuccess\Model\Rewrite\Listing\Product" />-->
 
-    <!--<type name="\Ess\M2ePro\Block\Adminhtml\Ebay\Listing\Grid">-->
-        <!--<plugin name="BeforeGrid" type="Magestore\M2esuccess\Plugin\Ebay\Listing\BeforeGrid" sortOrder="1" disabled="false"/>-->
+    <!--<type name="\Ess\M2ePro\Model\Magento\Product">-->
+        <!--<plugin name="aroundProduct" type="Magestore\M2eIntegration\Plugin\Magento\Product" sortOrder="1" disabled="false"/>-->
     <!--</type>-->
-
-    <type name="\Ess\M2ePro\Model\Magento\Product">
-        <plugin name="aroundProduct" type="Magestore\M2eIntegration\Plugin\Magento\Product" sortOrder="1" disabled="false"/>
-    </type>
 
     <!-- header -->
     <preference for="Ess\M2ePro\Block\Adminhtml\Listing\View\Header" type="Magestore\M2eIntegration\Block\Adminhtml\Listing\View\Header" />

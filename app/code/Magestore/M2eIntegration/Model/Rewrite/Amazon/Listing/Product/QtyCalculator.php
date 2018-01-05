@@ -13,72 +13,27 @@
  */
 namespace Magestore\M2eIntegration\Model\Rewrite\Amazon\Listing\Product;
 
-class QtyCalculator extends \Magestore\M2eIntegration\Model\Rewrite\Listing\Product\QtyCalculator
+class QtyCalculator extends \Ess\M2ePro\Model\Amazon\Listing\Product\QtyCalculator
 {
-    /**
-     * @var bool
-     */
-    private $isMagentoMode = false;
-
-    //########################################
-
-    /**
-     * @param bool $value
-     * @return \Ess\M2ePro\Model\Amazon\Listing\Product\QtyCalculator
-     */
-    public function setIsMagentoMode($value)
+    protected function getClearProductValue()
     {
-        $this->isMagentoMode = (bool)$value;
-        return $this;
-    }
+        if($this->getSource('mode') == \Ess\M2ePro\Model\Template\SellingFormat::QTY_MODE_PRODUCT){
+            $productId = $this->getMagentoProduct()->getProductId();
+            $listing_id = $this->getListing()->getId();
 
-    /**
-     * @return bool
-     */
-    protected function getIsMagentoMode()
-    {
-        return $this->isMagentoMode;
-    }
-
-    //########################################
-
-    public function getProductValue()
-    {
-        if ($this->getIsMagentoMode()) {
-            return (int)$this->getMagentoProduct()->getQty(true);
-        }
-
-        return parent::getProductValue();
-    }
-
-    protected function getOptionBaseValue(\Ess\M2ePro\Model\Listing\Product\Variation\Option $option)
-    {
-        if ($this->getIsMagentoMode() ||
-            $this->getSource('mode') == \Ess\M2ePro\Model\Template\SellingFormat::QTY_MODE_PRODUCT) {
-
-            if (!$this->getMagentoProduct()->isStatusEnabled() ||
-                !$this->getMagentoProduct()->isStockAvailability()) {
-                return 0;
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager
+            $resource = $objectManager->get('Magestore\M2eIntegration\Helper\Data');
+            $model = $resource->getModel('M2eListing');
+            $warehouse_id = $model->getWarehouseByListing($listing_id,true);
+            if($warehouse_id){
+                $stockModel =  $objectManager->create('Magestore\InventorySuccess\Model\Warehouse\WarehouseStockRegistry');
+                $stockItem = $stockModel->getStocks($warehouse_id ,$productId)->getLastItem();
+                if($stockItem) {
+                    return (int)$stockItem->getQty();
+                }
             }
         }
+        return parent::getClearProductValue();
 
-        if ($this->getIsMagentoMode()) {
-            return (int)$option->getMagentoProduct()->getQty(true);
-        }
-
-        return parent::getOptionBaseValue($option);
     }
-
-    //########################################
-
-    protected function applySellingFormatTemplateModifications($value)
-    {
-        if ($this->getIsMagentoMode()) {
-            return $value;
-        }
-
-        return parent::applySellingFormatTemplateModifications($value);
-    }
-
-    //########################################
 }

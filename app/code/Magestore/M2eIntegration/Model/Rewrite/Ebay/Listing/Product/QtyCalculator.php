@@ -12,38 +12,27 @@
  */
 namespace Magestore\M2eIntegration\Model\Rewrite\Ebay\Listing\Product;
 
-class QtyCalculator extends \Magestore\M2eIntegration\Model\Rewrite\Listing\Product\QtyCalculator
+class QtyCalculator extends \Ess\M2ePro\Model\Ebay\Listing\Product\QtyCalculator
 {
-    //########################################
-
-    public function getVariationValue(\Ess\M2ePro\Model\Listing\Product\Variation $variation)
+    protected function getClearProductValue()
     {
-        if ($variation->getChildObject()->isDelete()) {
-            return 0;
-        }
+        if($this->getSource('mode') == \Ess\M2ePro\Model\Template\SellingFormat::QTY_MODE_PRODUCT){
+            $productId = $this->getMagentoProduct()->getProductId();
+            $listing_id = $this->getListing()->getId();
 
-        return parent::getVariationValue($variation);
-    }
-
-    //########################################
-
-    protected function getOptionBaseValue(\Ess\M2ePro\Model\Listing\Product\Variation\Option $option)
-    {
-        if (!$option->getMagentoProduct()->isStatusEnabled() ||
-            !$option->getMagentoProduct()->isStockAvailability()) {
-            return 0;
-        }
-
-        if ($this->getSource('mode') == \Ess\M2ePro\Model\Template\SellingFormat::QTY_MODE_PRODUCT) {
-
-            if (!$this->getMagentoProduct()->isStatusEnabled() ||
-                !$this->getMagentoProduct()->isStockAvailability()) {
-                return 0;
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager
+            $resource = $objectManager->get('Magestore\M2eIntegration\Helper\Data');
+            $model = $resource->getModel('M2eListing');
+            $warehouse_id = $model->getWarehouseByListing($listing_id,true);
+            if($warehouse_id){
+                $stockModel =  $objectManager->create('Magestore\InventorySuccess\Model\Warehouse\WarehouseStockRegistry');
+                $stockItem = $stockModel->getStocks($warehouse_id ,$productId)->getLastItem();
+                if($stockItem) {
+                    return (int)$stockItem->getQty();
+                }
             }
         }
+        return parent::getClearProductValue();
 
-        return parent::getOptionBaseValue($option);
     }
-
-    //########################################
 }
