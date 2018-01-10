@@ -9,7 +9,7 @@ namespace Magestore\M2eIntegration\Model\ResourceModel\M2eOrder;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 
-class M2eOrder extends AbstractCollection
+class Collection extends AbstractCollection
 {
 
     public function _construct()
