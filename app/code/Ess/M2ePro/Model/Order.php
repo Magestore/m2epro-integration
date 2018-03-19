@@ -12,7 +12,6 @@ namespace Ess\M2ePro\Model;
  */
 class Order extends ActiveRecord\Component\Parent\AbstractModel
 {
-
     // M2ePro\TRANSLATIONS
     // Magento Order was not created. Reason: %msg%
     // Magento Order #%order_id% was created.
