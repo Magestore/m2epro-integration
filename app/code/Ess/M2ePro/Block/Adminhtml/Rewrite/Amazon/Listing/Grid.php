@@ -11,6 +11,7 @@ class Grid extends \Ess\M2ePro\Block\Adminhtml\Amazon\Listing\Grid
 {
     public function callbackColumnTitle($value, $row, $column, $isExport)
     {
+
         $html = parent::callbackColumnTitle($value, $row, $column, $isExport);
         /* m2e integration with Inventory_success*/
         $warehouse =  $this->__('Warehouse');
