@@ -8,13 +8,19 @@
 
 namespace Magestore\M2eIntegration\Model\ResourceModel\Magento\Product;
 
-class Collection extends \Ess\M2ePro\Model\ResourceModel\Magento\Product\Collection
+if(class_exists('\Ess\M2ePro\Model\ResourceModel\Magento\Product\Collection')){
+    class CollectionBase extends \Ess\M2ePro\Model\ResourceModel\Magento\Product\Collection {}
+}else{
+    class CollectionBase {}
+}
+
+class Collection extends CollectionBase
 {
     public function joinStockItem($columnsMap = array('qty' => 'qty'))
     {
         /* integration Inventory with M2epro */
         $listing = $this->helperFactory->getObject('Data\GlobalData')->getValue('listing_for_products_add');
-        $listing_id =   $listing->getId();
+        $listing_id =  $listing ? $listing->getId() : '';
         $warehouse_id = '';
         if($listing_id){
             $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager

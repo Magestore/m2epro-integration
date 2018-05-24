@@ -40,16 +40,17 @@ class Data
      * @param \Ess\M2ePro\Model\ActiveRecord\Component\Parent\Amazon\Factory $amazonFactory
      */
     public function __construct(
-        \Magestore\M2eIntegration\Helper\Factory $magestoreHelperFactory,
-        \Ess\M2ePro\Helper\Factory $m2eHelperFactory,
-        \Ess\M2ePro\Model\Factory $m2eModelFactory,
-        \Ess\M2ePro\Model\ActiveRecord\Component\Parent\Amazon\Factory $amazonFactory
+        \Magestore\M2eIntegration\Helper\Factory $magestoreHelperFactory
     )
     {
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $moduleManager = $objectManager->create('\Magento\Framework\Module\Manager');
         $this->magestoreHelperFactory = $magestoreHelperFactory;
-        $this->m2eHelperFactory = $m2eHelperFactory;
-        $this->m2eModelFactory = $m2eModelFactory;
-        $this->amazonFactory = $amazonFactory;
+        if($moduleManager->isEnabled('Ess_M2ePro')){
+            $this->m2eHelperFactory = $objectManager->create('\Ess\M2ePro\Helper\Factory');
+            $this->m2eModelFactory = $objectManager->create('\Ess\M2ePro\Model\Factory');
+            $this->amazonFactory = $objectManager->create('\Ess\M2ePro\Model\ActiveRecord\Component\Parent\Amazon\Factory');
+        }
     }
 
     /**

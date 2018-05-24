@@ -6,8 +6,13 @@
  */
 namespace Magestore\M2eIntegration\Controller\Adminhtml\Ebay\Order;
 
+if(class_exists('\Ess\M2ePro\Controller\Adminhtml\Ebay\Order\UpdateShippingStatus')){
+    class UpdateShippingStatusBase extends \Ess\M2ePro\Controller\Adminhtml\Ebay\Order\UpdateShippingStatus {}
+}else{
+    class UpdateShippingStatusBase {}
+}
 
-class UpdateShippingStatus extends \Ess\M2ePro\Controller\Adminhtml\Ebay\Order\UpdateShippingStatus
+class UpdateShippingStatus extends UpdateShippingStatusBase
 {
 
     /**
