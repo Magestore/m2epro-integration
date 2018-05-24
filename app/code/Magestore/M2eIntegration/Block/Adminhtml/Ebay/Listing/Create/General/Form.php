@@ -8,7 +8,13 @@
 
 namespace Magestore\M2eIntegration\Block\Adminhtml\Ebay\Listing\Create\General;
 
-class Form extends \Ess\M2ePro\Block\Adminhtml\Ebay\Listing\Create\General\Form
+if(class_exists('\Ess\M2ePro\Block\Adminhtml\Ebay\Listing\Create\General\Form')){
+    class FormBase extends \Ess\M2ePro\Block\Adminhtml\Ebay\Listing\Create\General\Form {}
+}else{
+    class FormBase {}
+}
+
+class Form extends FormBase
 {
 
     protected function _prepareForm()

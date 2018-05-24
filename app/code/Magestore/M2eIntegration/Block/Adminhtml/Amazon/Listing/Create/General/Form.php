@@ -6,9 +6,13 @@
  */
 namespace Magestore\M2eIntegration\Block\Adminhtml\Amazon\Listing\Create\General;
 
+if(class_exists('\Ess\M2ePro\Block\Adminhtml\Amazon\Listing\Create\General\Form')){
+    class FormBase extends \Ess\M2ePro\Block\Adminhtml\Amazon\Listing\Create\General\Form {}
+}else{
+    class FormBase {}
+}
 
-
-class Form extends \Ess\M2ePro\Block\Adminhtml\Amazon\Listing\Create\General\Form
+class Form extends FormBase
 {
 
 

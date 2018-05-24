@@ -13,7 +13,13 @@
  */
 namespace Magestore\M2eIntegration\Model\Rewrite\Amazon\Listing\Product;
 
-class QtyCalculator extends \Ess\M2ePro\Model\Amazon\Listing\Product\QtyCalculator
+if(class_exists('\Ess\M2ePro\Model\Amazon\Listing\Product\QtyCalculator')){
+    class QtyCalculatorBase extends \Ess\M2ePro\Model\Amazon\Listing\Product\QtyCalculator {}
+}else{
+    class QtyCalculatorBase {}
+}
+
+class QtyCalculator extends QtyCalculatorBase
 {
     protected function getClearProductValue()
     {

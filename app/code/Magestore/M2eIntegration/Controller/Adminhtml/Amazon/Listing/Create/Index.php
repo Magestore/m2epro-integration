@@ -6,7 +6,13 @@
  */
 namespace Magestore\M2eIntegration\Controller\Adminhtml\Amazon\Listing\Create;
 
-class Index extends \Ess\M2ePro\Controller\Adminhtml\Amazon\Main
+if(class_exists('\Ess\M2ePro\Controller\Adminhtml\Amazon\Listing\Create\Index')){
+    class IndexBase extends \Ess\M2ePro\Controller\Adminhtml\Amazon\Listing\Create\Index {}
+}else{
+    class IndexBase {}
+}
+
+class Index extends IndexBase
 {
     protected $sessionKey = 'amazon_listing_create';
 

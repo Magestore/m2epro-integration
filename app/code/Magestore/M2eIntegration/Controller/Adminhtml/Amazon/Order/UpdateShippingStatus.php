@@ -7,8 +7,13 @@
 namespace Magestore\M2eIntegration\Controller\Adminhtml\Amazon\Order;
 
 use Ess\M2ePro\Controller\Adminhtml\Amazon\Order;
+if(class_exists('\Ess\M2ePro\Controller\Adminhtml\Amazon\Order\UpdateShippingStatus')){
+    class UpdateShippingStatusBase extends \Ess\M2ePro\Controller\Adminhtml\Amazon\Order\UpdateShippingStatus {}
+}else{
+    class UpdateShippingStatusBase {}
+}
 
-class UpdateShippingStatus extends \Ess\M2ePro\Controller\Adminhtml\Amazon\Order\UpdateShippingStatus
+class UpdateShippingStatus extends UpdateShippingStatusBase
 {
     public function execute()
     {

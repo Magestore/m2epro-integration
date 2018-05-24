@@ -12,7 +12,13 @@
  */
 namespace Magestore\M2eIntegration\Model\Rewrite\Ebay\Listing\Product;
 
-class QtyCalculator extends \Ess\M2ePro\Model\Ebay\Listing\Product\QtyCalculator
+if(class_exists('\Ess\M2ePro\Model\Ebay\Listing\Product\QtyCalculator')){
+    class QtyCalculatorBase extends \Ess\M2ePro\Model\Ebay\Listing\Product\QtyCalculator {}
+}else{
+    class QtyCalculatorBase {}
+}
+
+class QtyCalculator extends QtyCalculatorBase
 {
     protected function getClearProductValue()
     {

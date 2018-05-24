@@ -5,8 +5,12 @@
  *
  */
 namespace Magestore\M2eIntegration\Block\Adminhtml\Listing\View;
-
-class Header extends \Ess\M2ePro\Block\Adminhtml\Listing\View\Header
+if(class_exists('\Ess\M2ePro\Block\Adminhtml\Listing\View\Header')){
+    class HeaderBase extends \Ess\M2ePro\Block\Adminhtml\Listing\View\Header {}
+}else{
+    class HeaderBase {}
+}
+class Header extends HeaderBase
 {
     protected $_template = 'listing/view/header.phtml';
 

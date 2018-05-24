@@ -6,7 +6,13 @@
 
 namespace Magestore\M2eIntegration\Plugin\Magento;
 
-class Product extends \Ess\M2ePro\Model\Magento\Product {
+if(class_exists('\Ess\M2ePro\Model\Magento\Product')){
+    class ProductBase extends \Ess\M2ePro\Model\Magento\Product {}
+}else{
+    class ProductBase {}
+}
+
+class Product extends ProductBase {
 
     public function aroundGetStockItem(\Ess\M2ePro\Model\Magento\Product $subject, $result)
     {

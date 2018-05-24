@@ -6,12 +6,15 @@
  */
 namespace Magestore\M2eIntegration\Controller\Adminhtml\Ebay\Listing\Create;
 
-class Index extends \Ess\M2ePro\Controller\Adminhtml\Ebay\Listing
+if(class_exists('\Ess\M2ePro\Controller\Adminhtml\Ebay\Listing\Create\Index')){
+    class IndexBase extends \Ess\M2ePro\Controller\Adminhtml\Ebay\Listing\Create\Index {}
+}else{
+    class IndexBase {}
+}
+
+class Index extends IndexBase
 {
-    protected $sessionKey = 'ebay_listing_create';
-
     //########################################
-
     public function execute()
     {
         $this->addCss('ebay/listing/templates.css');
